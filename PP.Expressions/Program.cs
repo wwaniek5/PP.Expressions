@@ -11,7 +11,7 @@ namespace PP.Expressions
     {
         static void Main(string[] args)
         {
-            var commands = new Commands(new ConsoleWriter(),new FixConverter());
+            var commands = new Commands(new ConsoleWriter(),new ExpressionsConverter());
             Parser.RunConsole(args, commands);
         }
     }

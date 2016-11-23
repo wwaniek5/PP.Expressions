@@ -5,27 +5,33 @@ namespace PP.Expressions
     internal class Commands
     {
         private ConsoleWriter _consoleWriter;
-        private FixConverter _fixConverter;
+        private ExpressionsConverter _expressionsConverter;
 
-        public Commands(ConsoleWriter consoleWriter,FixConverter fixConverter)
+        public Commands(ConsoleWriter consoleWriter,ExpressionsConverter expressionsConverter)
         {
             _consoleWriter = consoleWriter;
-            _fixConverter = fixConverter;
+            _expressionsConverter = expressionsConverter;
         }
 
 
         [Verb(Aliases = "pre")]
         public void ConvertPrefix([Required] string prefix)
         {
+            var infix = _expressionsConverter.ConvertPrefixToInfix(prefix);
+            var postfix = _expressionsConverter.ConvertInfixToPostFix(infix);
 
+            _consoleWriter.DisplayResult("infix", infix);
+            _consoleWriter.DisplayResult("postfix", postfix);
         }
 
         [Verb(Aliases = "in")]
         public void ConvertInfix([Required] string infix)
         {
-            string postfix = _fixConverter.ConvertInfixToPostFix(infix);
+            var postfix = _expressionsConverter.ConvertInfixToPostFix(infix);
+            var prefix= _expressionsConverter.ConvertPostfixToPrefix(postfix);
 
             _consoleWriter.DisplayResult("postfix",postfix);
+            _consoleWriter.DisplayResult("prefix", prefix);
         }
 
         
@@ -33,7 +39,11 @@ namespace PP.Expressions
         [Verb(Aliases = "post")]
         public void ConvertPostfix([Required] string postfix)
         {
+            var prefix = _expressionsConverter.ConvertPostfixToPrefix(postfix);
+            var infix = _expressionsConverter.ConvertPrefixToInfix(prefix);
 
+            _consoleWriter.DisplayResult("prefix", prefix);
+            _consoleWriter.DisplayResult("infix", infix);
         }
 
     }

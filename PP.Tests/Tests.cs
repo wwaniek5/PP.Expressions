@@ -19,7 +19,7 @@ namespace PP.Tests
         [TestCase("A*(B+C*D)+E", "ABCD*+*E+")]
         public void InfixToPostfix(string infix, string postfix)
         {
-            var sut = new FixConverter();
+            var sut = new ExpressionsConverter();
             sut.ConvertInfixToPostFix(infix).Should().Be(postfix);
         }
 
@@ -27,7 +27,7 @@ namespace PP.Tests
         [TestCase("ABC+*D$", "Symbol not allowed")]
         public void InfixToPostfixThrowsExceptionIfIncorrect(string infix, string exceptionMessage)
         {
-            var sut = new FixConverter();
+            var sut = new ExpressionsConverter();
             Exception exception = null;
             try
             {
@@ -47,7 +47,7 @@ namespace PP.Tests
         [TestCase("ABCD/+*", "*A+B/CD")]
         public void PostfixToPrefix(string postfix, string prefix)
         {
-            var sut = new FixConverter();
+            var sut = new ExpressionsConverter();
             sut.ConvertPostfixToPrefix(postfix).Should().Be(prefix);
         }
 
@@ -55,7 +55,7 @@ namespace PP.Tests
         [TestCase("ABC+*D$", "Symbol not allowed")]
         public void PostfixToPrefixThrowsExceptionIfIncorrect(string postfix,string exceptionMessage)
         {
-            var sut = new FixConverter();
+            var sut = new ExpressionsConverter();
             Exception exception = null;
             try
             {
@@ -75,7 +75,7 @@ namespace PP.Tests
         [TestCase("*A+B/CD", "(A*(B+(C/D)))")]
         public void PrefixToInfix(string prefix, string infix)
         {
-            var sut = new FixConverter();
+            var sut = new ExpressionsConverter();
             sut.ConvertPrefixToInfix(prefix).Should().Be(infix);
         }
 
@@ -84,7 +84,7 @@ namespace PP.Tests
         [TestCase("*A$", "Symbol not allowed")]
         public void PrefixToInfixThrowsExceptionIfIncorrect(string prefix, string exceptionMessage)
         {
-            var sut = new FixConverter();
+            var sut = new ExpressionsConverter();
             Exception exception = null;
             try
             {

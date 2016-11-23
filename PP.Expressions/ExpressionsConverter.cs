@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace PP.Expressions
 {
-    public class FixConverter
+    public class ExpressionsConverter
     {
         private Dictionary<char, int> _operatorImportance = new Dictionary<char, int>
         {

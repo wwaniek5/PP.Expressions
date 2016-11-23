@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Commands.cs" />
     <Compile Include="ConsoleWriter.cs" />
-    <Compile Include="FixConverter.cs" />
+    <Compile Include="ExpressionsConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
