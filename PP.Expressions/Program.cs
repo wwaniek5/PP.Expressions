@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CLAP;
 
 namespace PP.Expressions
 {
@@ -10,6 +11,8 @@ namespace PP.Expressions
     {
         static void Main(string[] args)
         {
+            var commands = new Commands(new ConsoleWriter(),new FixConverter());
+            Parser.RunConsole(args, commands);
         }
     }
 }
